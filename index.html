@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Budak-Budak FREE - Main & Belajar!</title>
+<style>
+body{font-family:Arial;text-align:center;background:#FFF9C4;margin:0;padding:15px}
+h1{color:#FF4081;font-size:28px}
+p{color:#333}
+.box{background:white;border-radius:20px;padding:20px;margin:15px 0;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+button{background:#FF4081;color:white;border:none;padding:15px 25px;border-radius:30px;font-size:18px;margin:5px}
+button:active{transform:scale(0.95)}
+#game{font-size:60px;margin:20px}
+.score{font-size:22px;font-weight:bold;color:#4CAF50}
+</style>
+</head>
+<body>
+<h1>🎮 Game Budak-Budak FREE 🎮</h1>
+<p>Main sambil belajar! Tekan game di bawah 👇</p>
+
+<div class="box">
+<h2>1. Tebak Emoji 🍓🍌🍎</h2>
+<div id="game">❓</div>
+<p id="soalan">Tekan START untuk main!</p>
+<button onclick="mula()">START</button>
+<div id="pilihan"></div>
+<p class="score" id="skor">Skor: 0</p>
+</div>
+
+<div class="box">
+<h2>2. Kira Nombor 🔢</h2>
+<p>Berapa 2 + 3 = ?</p>
+<button onclick="alert('BETUL! Pandai! 🎉')">5</button>
+<button onclick="alert('Cuba lagi ya')">4</button>
+<button onclick="alert('Cuba lagi ya')">6</button>
+</div>
+
+<div class="box">
+<h2>3. Mainan Best Untuk Budak 🧸</h2>
+<p>Mak ayah, tengok mainan murah di sini 👇</p>
+<a href="https://shopee.com.my" target="_blank"><button style="background:#FF5722">🛒 Beli Mainan Murah di Shopee</button></a>
+<p style="font-size:12px">Nanti letak link Shopee kau di sini</p>
+</div>
+
+<p>© 2026 mcputrintan-mcr.github.io - Dibuat dengan ❤️</p>
+
+<script>
+let buah = [{e:'🍓',n:'Strawberi'},{e:'🍌',n:'Pisang'},{e:'🍎',n:'Epal'},{e:'🍇',n:'Anggur'},{e:'🍊',n:'Oren'}];
+let betul = '';
+let skor = 0;
+function mula(){
+let r = buah[Math.floor(Math.random()*buah.length)];
+betul = r.n;
+document.getElementById('game').innerText = r.e;
+document.getElementById('soalan').innerText = 'Buah apa ni?';
+let pil = '';
+buah.forEach(b=>{
+pil += `<button onclick="semak('${b.n}')">${b.n}</button>`;
+});
+document.getElementById('pilihan').innerHTML = pil;
+}
+function semak(jawapan){
+if(jawapan === betul){skor++; alert('BETUL! Pandai sangat! 🎉');} else {alert('Ala, cuba lagi!');}
+document.getElementById('skor').innerText = 'Skor: ' + skor;
+mula();
+}
+</script>
+</body>
+</html>
